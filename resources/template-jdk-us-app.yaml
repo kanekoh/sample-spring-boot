@@ -51,12 +51,12 @@ objects:
             valueFrom:
               secretKeyRef:
                 key: database-user
-                name: ${DATABASE_SERVICE_NAME}
+                name: jdk-us-app-${SUFFIX}
           - name: POSTGRESQL_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: database-password
-                name: ${DATABASE_SERVICE_NAME}
+                name: jdk-us-app-${SUFFIX}
           - name: POSTGRESQL_DATABASE
             valueFrom:
               secretKeyRef:
@@ -116,11 +116,6 @@ objects:
   status:
     loadBalancer: {}
 parameters:
-- description: The name of the OpenShift Service exposed for the database.
-  displayName: Database Service Name
-  name: DATABASE_SERVICE_NAME
-  required: true
-  value: postgresql
 - description: Username for PostgreSQL user that will be used for accessing the database.
   displayName: PostgreSQL Connection Username
   from: user[A-Z0-9]{3}
