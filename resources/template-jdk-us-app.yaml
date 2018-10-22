@@ -10,7 +10,6 @@ objects:
     labels:
       app: jdk-us-app
   stringData:
-    database-name: ${POSTGRESQL_DATABASE}
     database-password: ${POSTGRESQL_PASSWORD}
     database-user: ${POSTGRESQL_USER}
 - apiVersion: v1
@@ -57,11 +56,6 @@ objects:
               secretKeyRef:
                 key: database-password
                 name: jdk-us-app-${SUFFIX}
-          - name: POSTGRESQL_DATABASE
-            valueFrom:
-              secretKeyRef:
-                key: database-name
-                name: ${DATABASE_SERVICE_NAME}
           image: docker-registry.default.svc:5000/dev-project/jdk-us-app:dev
           imagePullPolicy: Always
           name: jdk-us-app
