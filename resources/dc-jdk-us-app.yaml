@@ -7,6 +7,8 @@ objects:
   kind: Secret
   metadata:
     name: ${DATABASE_SERVICE_NAME}
+    labels:
+      app: jdk-us-app
   stringData:
     database-name: ${POSTGRESQL_DATABASE}
     database-password: ${POSTGRESQL_PASSWORD}
